@@ -15,7 +15,7 @@ Use esta skill quando o projeto já tiver sido inicializado com Vite + React + T
 - inicializar shadcn/ui
 - validar setup com componente `Button`
 
-Para dark mode (light/dark/system), use a skill separada `add-shadcn-theme-vite`.
+Para dark mode (light/dark/system), use a skill separada `add-shadcn-darkmode-theme`.
 
 Não use esta skill em projetos Next.js. Para Next.js, siga a documentação específica de setup para Next.
 
@@ -224,7 +224,7 @@ export default function App() {
 
 Motivo: manter providers de UI no componente de aplicação, sem acoplar `main.tsx` à configuração de componentes e sem perder o comportamento atual do app.
 
-Se o projeto precisar de dark mode (`light/dark/system`), aplique depois a skill `add-shadcn-theme-vite`.
+Se o projeto precisar de dark mode (`light/dark/system`), aplique depois a skill `add-shadcn-darkmode-theme`.
 
 Se usar componentes de sidebar, envolva a área correspondente com `SidebarProvider`.
 Se precisar de suporte RTL/LTR global, envolva a aplicação com `DirectionProvider`.

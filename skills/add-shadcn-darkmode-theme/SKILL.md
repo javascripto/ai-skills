@@ -1,5 +1,5 @@
 ---
-name: add-shadcn-theme-vite
+name: add-shadcn-darkmode-theme
 description: Configuração de dark mode (light/dark/system) para projetos Vite + React + TypeScript com shadcn/ui. Use após a skill add-tailwind-shadcn para criar ThemeProvider, ajustar sonner e validar alternância de tema.
 ---
 
