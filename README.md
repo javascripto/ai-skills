@@ -83,6 +83,12 @@ skills/
     SKILL.md
   add-shadcn-darkmode-theme/
     SKILL.md
+  frontend-design/
+    SKILL.md
+  web-artifacts-builder/
+    SKILL.md
+  frontend-aesthetic-guard/
+    SKILL.md
   instagram-caption-fetcher/
     SKILL.md
     agents/

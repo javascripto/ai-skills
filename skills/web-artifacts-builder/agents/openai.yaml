@@ -1,0 +1,6 @@
+interface:
+  display_name: "Web Artifacts Builder"
+  short_description: "Build complex single-file HTML artifacts with React stack."
+  icon_small: "../_shared/assets/generic-skill-icon.svg"
+  icon_large: "../_shared/assets/generic-skill-icon.svg"
+  default_prompt: "Use $web-artifacts-builder to create a multi-component artifact with React + TypeScript + Tailwind + shadcn/ui, then bundle it into a single self-contained bundle.html."
