@@ -1,0 +1,6 @@
+interface:
+  display_name: "Add Tailwind Shadcn"
+  short_description: "Configure Tailwind v4 + shadcn/ui for Vite React."
+  icon_small: "../_shared/assets/generic-skill-icon.svg"
+  icon_large: "../_shared/assets/generic-skill-icon.svg"
+  default_prompt: "Use $add-tailwind-shadcn to set up Tailwind CSS v4, alias @, and shadcn/ui in my Vite + React + TypeScript project."

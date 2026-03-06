@@ -1,0 +1,6 @@
+interface:
+  display_name: "Init Vite React TS"
+  short_description: "Bootstrap a clean Vite + React + TypeScript app."
+  icon_small: "../_shared/assets/generic-skill-icon.svg"
+  icon_large: "../_shared/assets/generic-skill-icon.svg"
+  default_prompt: "Use $init-vite-react-ts to initialize a new Vite + React + TypeScript project with the clean baseline from this skill."
