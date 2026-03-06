@@ -9,9 +9,11 @@ Examples:
     init_skill.py my-new-skill
     init_skill.py my-api-helper
 
-Skills are created at /home/ubuntu/skills/<skill-name>/
+Skills are created at <skills-root>/<skill-name>/.
+Set SKILLS_BASE_PATH to override the default skills root.
 """
 
+import os
 import sys
 from pathlib import Path
 
@@ -192,7 +194,8 @@ def title_case_skill_name(skill_name):
     return ' '.join(word.capitalize() for word in skill_name.split('-'))
 
 
-SKILLS_BASE_PATH = "/home/ubuntu/skills"
+DEFAULT_SKILLS_BASE_PATH = Path(__file__).resolve().parents[2]
+SKILLS_BASE_PATH = Path(os.environ.get("SKILLS_BASE_PATH", str(DEFAULT_SKILLS_BASE_PATH))).resolve()
 
 
 def init_skill(skill_name):
@@ -206,7 +209,7 @@ def init_skill(skill_name):
         Path to created skill directory, or None if error
     """
     # Determine skill directory path
-    skill_dir = Path(SKILLS_BASE_PATH) / skill_name
+    skill_dir = SKILLS_BASE_PATH / skill_name
 
     # Check if directory already exists
     if skill_dir.exists():

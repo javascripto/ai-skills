@@ -8,17 +8,20 @@ Usage:
 
 Examples:
     quick_validate.py my-skill
-    quick_validate.py /home/ubuntu/skills/my-skill
+    quick_validate.py /path/to/skills/my-skill
 
-Skills are expected at /home/ubuntu/skills/<skill-name>/
+Skills are expected at <skills-root>/<skill-name>/.
+Set SKILLS_BASE_PATH to override the default skills root.
 """
 
+import os
 import sys
 import re
 import yaml
 from pathlib import Path
 
-SKILLS_BASE_PATH = Path("/home/ubuntu/skills")
+DEFAULT_SKILLS_BASE_PATH = Path(__file__).resolve().parents[2]
+SKILLS_BASE_PATH = Path(os.environ.get("SKILLS_BASE_PATH", str(DEFAULT_SKILLS_BASE_PATH))).resolve()
 
 
 def resolve_skill_path(skill_path_or_name):
@@ -120,7 +123,7 @@ if __name__ == "__main__":
         print("       quick_validate.py <absolute-path-to-skill>")
         print("\nExamples:")
         print("  quick_validate.py my-skill")
-        print("  quick_validate.py /home/ubuntu/skills/my-skill")
+        print("  quick_validate.py /path/to/skills/my-skill")
         print(f"\nSkills are expected at {SKILLS_BASE_PATH}/<skill-name>/")
         sys.exit(1)
     
