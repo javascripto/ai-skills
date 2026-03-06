@@ -1,10 +1,10 @@
 ---
-name: skill-creator
+name: manus-skill-creator
 description: Guide for creating or updating skills that extend Manus via specialized knowledge, workflows, or tool integrations. For any modification or improvement request, MUST first read this skill and follow its update workflow instead of editing files directly.
 license: Complete terms in LICENSE.txt
 ---
 
-# Skill Creator
+# Manus Skill Creator
 
 This skill provides guidance for creating effective skills.
 
@@ -143,7 +143,7 @@ When creating a new skill from scratch, always run the `init_skill.py` script. T
 Usage:
 
 ```bash
-python /home/ubuntu/skills/skill-creator/scripts/init_skill.py <skill-name>
+python /home/ubuntu/skills/manus-skill-creator/scripts/init_skill.py <skill-name>
 ```
 
 The script:
@@ -163,9 +163,9 @@ When editing the (newly-generated or existing) skill, remember that the skill is
 
 Consult these helpful guides based on your skill's needs:
 
-- **Multi-step processes**: See `/home/ubuntu/skills/skill-creator/references/workflows.md` for sequential workflows and conditional logic
-- **Output formats or quality standards**: See `/home/ubuntu/skills/skill-creator/references/output-patterns.md` for template and example patterns
-- **Progressive Disclosure Patterns**: See `/home/ubuntu/skills/skill-creator/references/progressive-disclosure-patterns.md` for splitting content across files.
+- **Multi-step processes**: See `/home/ubuntu/skills/manus-skill-creator/references/workflows.md` for sequential workflows and conditional logic
+- **Output formats or quality standards**: See `/home/ubuntu/skills/manus-skill-creator/references/output-patterns.md` for template and example patterns
+- **Progressive Disclosure Patterns**: See `/home/ubuntu/skills/manus-skill-creator/references/progressive-disclosure-patterns.md` for splitting content across files.
 
 These files contain established best practices for effective skill design.
 
@@ -202,7 +202,7 @@ Once development of the skill is complete, validate and deliver it to the user.
 Run the validation script to ensure the skill meets all requirements:
 
 ```bash
-python /home/ubuntu/skills/skill-creator/scripts/quick_validate.py <skill-name>
+python /home/ubuntu/skills/manus-skill-creator/scripts/quick_validate.py <skill-name>
 ```
 
 If validation fails, fix the errors and run validation again.
