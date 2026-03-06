@@ -1,0 +1,4 @@
+interface:
+  display_name: "YouTube Caption Fetcher"
+  short_description: "Download YouTube captions with timestamps."
+  default_prompt: "Download YouTube subtitles with timestamps in original language or pt-BR, preferring manual subtitles and falling back to auto-captions."

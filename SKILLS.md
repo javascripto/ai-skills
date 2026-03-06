@@ -12,6 +12,7 @@
 | Init Vite React TS | `skills/init-vite-react-ts/SKILL.md` | estável | Cria/limpa a base de projeto Vite React TypeScript |
 | Add Tailwind + shadcn | `skills/add-tailwind-shadcn/SKILL.md` | estável | Setup não-destrutivo de Tailwind v4 + shadcn |
 | Add shadcn Darkmode Theme | `skills/add-shadcn-darkmode-theme/SKILL.md` | estável | Provider e toggle de tema light/dark/system |
+| YouTube Caption Fetcher | `skills/youtube-caption-fetcher/SKILL.md` | estável | Busca legendas do YouTube com fallback para download de áudio |
 
 ## Convenções
 - Manter uma skill por diretório em `skills/<skill-name>/SKILL.md`.
