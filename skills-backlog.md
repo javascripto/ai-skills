@@ -9,6 +9,7 @@
 - [x] Instalar Tailwind (`skills/add-tailwind-shadcn`)
 - [x] Instalar shadcn (`skills/add-tailwind-shadcn`)
 - [x] Dark mode (`skills/add-shadcn-darkmode-theme`)
+- [x] Gerar favicon em https://realfavicongenerator.net/ (`skills/generate-favicons-rfg`)
 
 ## Qualidade e Tooling
 
@@ -20,7 +21,6 @@
 
 - [ ] Criar rotas com react-router-dom
 - [ ] Skills de UI design para evitar layouts com cara de gerados por IA
-- [ ] Gerar favicon em https://realfavicongenerator.net/your-favicon-is-ready
 - [ ] Criar layout base com menu horizontal recolhível
 - [ ] Criar formulários shadcn + react-hook-form + zod
 - [ ] Criar formulários multi-step

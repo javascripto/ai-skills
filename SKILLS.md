@@ -29,6 +29,7 @@ Categorias oficiais para classificar skills atuais e futuras:
 | Frontend Aesthetic Guard | `skills/frontend-aesthetic-guard/SKILL.md` | `frontend` | estável | Guia para interfaces frontend premium, responsivas e não-genéricas |
 | Frontend Design | `skills/frontend-design/SKILL.md` | `frontend` | estável | Criação de interfaces frontend memoráveis com direção estética ousada e execução de nível produção |
 | Web Artifacts Builder | `skills/web-artifacts-builder/SKILL.md` | `frontend`, `tools` | estável | Criação de artifacts HTML complexos com React + Tailwind + shadcn e bundle final em arquivo único |
+| Generate Favicons RFG | `skills/generate-favicons-rfg/SKILL.md` | `tools`, `frontend` | estável | Gera pacote de favicons/manifest via RealFaviconGenerator e integra no projeto com atualização idempotente do `index.html` |
 | YouTube Caption Fetcher | `skills/youtube-caption-fetcher/SKILL.md` | `media`, `tools` | estável | Busca legendas do YouTube com fallback para download de áudio |
 | Instagram Caption Fetcher | `skills/instagram-caption-fetcher/SKILL.md` | `media`, `tools` | estável | Extrai legendas do Instagram com fallback para transcrição de áudio |
 | Local Faster Whisper Transcribe | `skills/local-faster-whisper-transcribe/SKILL.md` | `media`, `tools` | estável | Transcreve áudio/vídeo localmente com faster-whisper (offline) |

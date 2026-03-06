@@ -1,0 +1,4 @@
+interface:
+  display_name: "Generate Favicons (RFG)"
+  short_description: "Generate and integrate favicon assets safely."
+  default_prompt: "Use $generate-favicons-rfg to generate favicon assets from an input icon and wire them into a Vite project head safely."
