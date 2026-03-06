@@ -1,0 +1,6 @@
+interface:
+  display_name: "Local Faster Whisper Transcribe"
+  short_description: "Transcreve áudio e vídeo localmente com faster-whisper."
+  icon_small: "../_shared/assets/generic-skill-icon.svg"
+  icon_large: "../_shared/assets/generic-skill-icon.svg"
+  default_prompt: "Use $local-faster-whisper-transcribe para transcrever áudio/vídeo localmente com faster-whisper, sem usar OpenAI API nem gastar tokens."

@@ -13,6 +13,8 @@
 | Add Tailwind + shadcn | `skills/add-tailwind-shadcn/SKILL.md` | estável | Setup não-destrutivo de Tailwind v4 + shadcn |
 | Add shadcn Darkmode Theme | `skills/add-shadcn-darkmode-theme/SKILL.md` | estável | Provider e toggle de tema light/dark/system |
 | YouTube Caption Fetcher | `skills/youtube-caption-fetcher/SKILL.md` | estável | Busca legendas do YouTube com fallback para download de áudio |
+| Instagram Caption Fetcher | `skills/instagram-caption-fetcher/SKILL.md` | estável | Extrai legendas do Instagram com fallback para transcrição de áudio |
+| Local Faster Whisper Transcribe | `skills/local-faster-whisper-transcribe/SKILL.md` | estável | Transcreve áudio/vídeo localmente com faster-whisper (offline) |
 
 ## Convenções
 - Manter uma skill por diretório em `skills/<skill-name>/SKILL.md`.

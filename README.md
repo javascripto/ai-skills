@@ -83,6 +83,14 @@ skills/
     SKILL.md
   add-shadcn-darkmode-theme/
     SKILL.md
+  instagram-caption-fetcher/
+    SKILL.md
+    agents/
+    scripts/
+  local-faster-whisper-transcribe/
+    SKILL.md
+    agents/
+    scripts/
   manus-skill-creator/
     SKILL.md
     scripts/

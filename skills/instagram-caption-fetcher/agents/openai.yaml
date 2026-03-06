@@ -1,0 +1,6 @@
+interface:
+  display_name: "Instagram Caption Fetcher"
+  short_description: "Extrai legendas do Instagram com fallback de transcrição."
+  icon_small: "../_shared/assets/generic-skill-icon.svg"
+  icon_large: "../_shared/assets/generic-skill-icon.svg"
+  default_prompt: "Use $instagram-caption-fetcher para extrair legendas com timestamps de vídeos do Instagram, tentando subtitle track primeiro e transcrevendo o áudio quando necessário."
