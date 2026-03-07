@@ -87,6 +87,33 @@ Você pode escolher entre duas skills de criação:
 
 ---
 
+## Sincronização com `~/.codex/skills`
+
+Este repositório inclui o script `scripts/sync_codex_skills.sh` para criar symlinks das skills locais em `~/.codex/skills` sem sobrescrever o que já existe.
+
+Uso:
+
+```bash
+./scripts/sync_codex_skills.sh
+```
+
+Pré-visualização (sem alterar nada):
+
+```bash
+./scripts/sync_codex_skills.sh --dry-run
+```
+
+Comportamento:
+
+- Cria links para diretórios com `SKILL.md` e para compartilhados permitidos (por padrão, `_shared`).
+- Aceita `--shared-dir <name>` para incluir outros diretórios compartilhados sem `SKILL.md`.
+- Cria links apenas para entradas que ainda não existem no destino.
+- Mantém skills já instaladas manualmente.
+- Ignora caminhos existentes para evitar alterações destrutivas.
+- Repara symlink quebrado por padrão (use `--no-relink-broken` para desativar).
+
+---
+
 # 🎯 Objetivo do Sistema
 
 Criar um conjunto modular de instruções reutilizáveis para:
