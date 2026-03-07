@@ -1,0 +1,6 @@
+interface:
+  display_name: "YouTube Video Info"
+  short_description: "Extract common YouTube video metadata."
+  icon_small: "../_shared/assets/generic-skill-icon.svg"
+  icon_large: "../_shared/assets/generic-skill-icon.svg"
+  default_prompt: "Use $youtube-video-info to extract common metadata from a YouTube URL or video ID, such as title, description, channel, duration, publish date, and engagement stats."

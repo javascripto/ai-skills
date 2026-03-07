@@ -1,0 +1,6 @@
+interface:
+  display_name: "YouTube Thumbnail Links"
+  short_description: "Generate multi-size YouTube thumbnail URLs."
+  icon_small: "../_shared/assets/generic-skill-icon.svg"
+  icon_large: "../_shared/assets/generic-skill-icon.svg"
+  default_prompt: "Use $youtube-thumbnail-links to extract a YouTube video ID from a URL and generate clickable thumbnail links in all standard sizes."
