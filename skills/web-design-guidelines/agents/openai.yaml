@@ -1,0 +1,6 @@
+interface:
+  display_name: "Web Design Guidelines"
+  short_description: "Review web UI files against live guideline rules."
+  icon_small: "../_shared/assets/generic-skill-icon.svg"
+  icon_large: "../_shared/assets/generic-skill-icon.svg"
+  default_prompt: "Use $web-design-guidelines to review specific frontend files for compliance with the latest web interface guidelines and report findings as file:line."
