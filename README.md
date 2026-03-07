@@ -73,43 +73,10 @@ Princípios de autoria:
 
 ---
 
-# 📁 Organização Atual
+## Inventário de Skills
 
-```text
-skills/
-  init-vite-react-ts/
-    SKILL.md
-  add-tailwind-shadcn/
-    SKILL.md
-  add-shadcn-darkmode-theme/
-    SKILL.md
-  frontend-design/
-    SKILL.md
-  web-artifacts-builder/
-    SKILL.md
-  frontend-aesthetic-guard/
-    SKILL.md
-  instagram-caption-fetcher/
-    SKILL.md
-    agents/
-    scripts/
-  local-faster-whisper-transcribe/
-    SKILL.md
-    agents/
-    scripts/
-  manus-skill-creator/
-    SKILL.md
-    scripts/
-    references/
-  codex-skill-creator/
-    SKILL.md
-    agents/
-    scripts/
-    references/
-    assets/
-```
-
-Cada skill deve viver em seu próprio diretório, com `SKILL.md` como ponto de entrada.
+Para lista de skills ativas, status e categorias, use somente `SKILLS.md`.
+O `README.md` descreve convenções e objetivos gerais, sem replicar o inventário.
 
 ## Escolha de Skill para Criar Skills
 

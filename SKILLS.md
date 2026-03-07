@@ -28,9 +28,12 @@ Categorias oficiais para classificar skills atuais e futuras:
 | Add shadcn Darkmode Theme | `skills/add-shadcn-darkmode-theme/SKILL.md` | `frontend` | estável | Provider e toggle de tema light/dark/system |
 | Frontend Aesthetic Guard | `skills/frontend-aesthetic-guard/SKILL.md` | `frontend` | estável | Guia para interfaces frontend premium, responsivas e não-genéricas |
 | Frontend Design | `skills/frontend-design/SKILL.md` | `frontend` | estável | Criação de interfaces frontend memoráveis com direção estética ousada e execução de nível produção |
+| Web Design Guidelines | `skills/web-design-guidelines/SKILL.md` | `frontend`, `tools` | estável | Revisa arquivos de interface web contra diretrizes atualizadas e reporta findings em formato `file:line` |
 | Web Artifacts Builder | `skills/web-artifacts-builder/SKILL.md` | `frontend`, `tools` | estável | Criação de artifacts HTML complexos com React + Tailwind + shadcn e bundle final em arquivo único |
 | Generate Favicons RFG | `skills/generate-favicons-rfg/SKILL.md` | `tools`, `frontend` | estável | Gera pacote de favicons/manifest via RealFaviconGenerator e integra no projeto com atualização idempotente do `index.html` |
 | YouTube Caption Fetcher | `skills/youtube-caption-fetcher/SKILL.md` | `media`, `tools` | estável | Busca legendas do YouTube com fallback para download de áudio |
+| YouTube Thumbnail Links | `skills/youtube-thumbnail-links/SKILL.md` | `media`, `tools` | estável | Gera links de thumbnails do YouTube em múltiplos tamanhos a partir de URL ou video ID, com saída plain/Markdown/JSON |
+| YouTube Video Info | `skills/youtube-video-info/SKILL.md` | `media`, `tools` | estável | Extrai metadados comuns de vídeos do YouTube (título, descrição, canal, duração, data e contadores) em formatos plain/Markdown/JSON |
 | Instagram Caption Fetcher | `skills/instagram-caption-fetcher/SKILL.md` | `media`, `tools` | estável | Extrai legendas do Instagram com fallback para transcrição de áudio |
 | Local Faster Whisper Transcribe | `skills/local-faster-whisper-transcribe/SKILL.md` | `media`, `tools` | estável | Transcreve áudio/vídeo localmente com faster-whisper (offline) |
 
