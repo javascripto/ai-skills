@@ -16,6 +16,9 @@ Estas regras se aplicam a todas as skills e agentes:
 - Evitar ferramentas experimentais
 - Sempre documentar decisões
 - Preferir instruções não-destrutivas em projetos existentes (fazer merge em vez de sobrescrever arquivos inteiros)
+- Não fazer commit automático; deixar commit sempre como ação explícita do usuário
+- Em projetos legados/grandes, evitar formatação em massa antes do commit de bootstrap de tooling
+- Rodar validações amplas ou comandos com `--write` em lote apenas após confirmação do usuário
 
 ## Notas
 - Este arquivo é a fonte única de verdade para convenções globais.

@@ -10,14 +10,15 @@
 - [x] Instalar shadcn (`skills/add-tailwind-shadcn`)
 - [x] Dark mode (`skills/add-shadcn-darkmode-theme`)
 - [x] Gerar favicon em https://realfavicongenerator.net/ (`skills/generate-favicons-rfg`)
+- [x] Migração para Biome + Husky + lint-staged (`skills/biome-upgrade-hooks`)
 
 ## Qualidade e Tooling
 
 - [ ] Setup TDD com Vitest + Testing Library + cobertura
 - [ ] Configurar tsconfig paths para app e testes (TDD-friendly)
-- [ ] Substituir ESLint por BiomeJS (com config pessoal e versão fixa)
-- [ ] Skill de instalação BiomeJS com config padronizada
-- [ ] Skill de instalação e configuração lint-staged + Husky + npm scripts
+- [x] Substituir ESLint por BiomeJS (com config pessoal e versão fixa)
+- [x] Skill de instalação BiomeJS com config padronizada
+- [x] Skill de instalação e configuração lint-staged + Husky + npm scripts
 - [ ] Configurar commitlint + conventional commits
 - [ ] Versionamento semântico + changelog automático
 - [ ] Code review guidelines automatizadas

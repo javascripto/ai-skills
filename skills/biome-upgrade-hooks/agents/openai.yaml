@@ -1,0 +1,4 @@
+interface:
+  display_name: "Biome Upgrade Hooks"
+  short_description: "Migra projetos para Biome moderno com Husky e lint-staged."
+  default_prompt: "Atualize o projeto para Biome mais recente, remova ESLint/Prettier, ajuste package.json, lint-staged e hooks pre-commit/pre-push."

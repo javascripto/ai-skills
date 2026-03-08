@@ -31,6 +31,7 @@ Categorias oficiais para classificar skills atuais e futuras:
 | Web Design Guidelines | `skills/web-design-guidelines/SKILL.md` | `frontend`, `tools` | estável | Revisa arquivos de interface web contra diretrizes atualizadas e reporta findings em formato `file:line` |
 | Web Artifacts Builder | `skills/web-artifacts-builder/SKILL.md` | `frontend`, `tools` | estável | Criação de artifacts HTML complexos com React + Tailwind + shadcn e bundle final em arquivo único |
 | Generate Favicons RFG | `skills/generate-favicons-rfg/SKILL.md` | `tools`, `frontend` | estável | Gera pacote de favicons/manifest via RealFaviconGenerator e integra no projeto com atualização idempotente do `index.html` |
+| Biome Upgrade Hooks | `skills/biome-upgrade-hooks/SKILL.md` | `tools` | estável | Migra projetos de ESLint/Prettier para Biome, atualiza Husky/lint-staged, configura hooks pre-commit/pre-push e aplica guardrails para projetos legados |
 | YouTube Caption Fetcher | `skills/youtube-caption-fetcher/SKILL.md` | `media`, `tools` | estável | Busca legendas do YouTube com fallback para download de áudio |
 | YouTube Thumbnail Links | `skills/youtube-thumbnail-links/SKILL.md` | `media`, `tools` | estável | Gera links de thumbnails do YouTube em múltiplos tamanhos a partir de URL ou video ID, com saída plain/Markdown/JSON |
 | YouTube Video Info | `skills/youtube-video-info/SKILL.md` | `media`, `tools` | estável | Extrai metadados comuns de vídeos do YouTube (título, descrição, canal, duração, data e contadores) em formatos plain/Markdown/JSON |

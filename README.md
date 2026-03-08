@@ -17,7 +17,7 @@ O objetivo é reduzir ambiguidade e impedir improvisações.
 
 - Índice de skills: `SKILLS.md`
 - Regras globais de agentes: `AGENTS.md`
-- Backlog de skills: `skills-backlog.md`
+- Backlog de skills: `BACKLOG.md`
 
 ---
 
