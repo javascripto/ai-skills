@@ -1,0 +1,4 @@
+interface:
+  display_name: "Antigravity Web Design"
+  short_description: "Applies native aesthetic guidelines for premium, rich and responsive web interfaces"
+  default_prompt: "Design and build a premium, memorable web interface applying the strict aesthetic guidelines of Antigravity."

@@ -23,11 +23,13 @@ Categorias oficiais para classificar skills atuais e futuras:
 |---|---|---|---|---|
 | Manus Skill Creator | `skills/manus-skill-creator/SKILL.md` | `meta`, `docs` | estável | Skill de criação de skills orientada ao ecossistema Manus |
 | Codex Skill Creator | `skills/codex-skill-creator/SKILL.md` | `meta`, `docs` | estável | Skill de criação/atualização de skills para o fluxo Codex |
+| Antigravity Operational Framework | `skills/antigravity-operational-framework/SKILL.md` | `meta`, `docs` | estável | Diretrizes oficiais operacionais do agente para planejamento, execução e validação por artefatos |
 | Init Vite React TS | `skills/init-vite-react-ts/SKILL.md` | `frontend`, `tools` | estável | Cria/limpa a base de projeto Vite React TypeScript |
 | Add Tailwind + shadcn | `skills/add-tailwind-shadcn/SKILL.md` | `frontend`, `tools` | estável | Setup não-destrutivo de Tailwind v4 + shadcn |
 | Add shadcn Darkmode Theme | `skills/add-shadcn-darkmode-theme/SKILL.md` | `frontend` | estável | Provider e toggle de tema light/dark/system |
 | Frontend Aesthetic Guard | `skills/frontend-aesthetic-guard/SKILL.md` | `frontend` | estável | Guia para interfaces frontend premium, responsivas e não-genéricas |
 | Frontend Design | `skills/frontend-design/SKILL.md` | `frontend` | estável | Criação de interfaces frontend memoráveis com direção estética ousada e execução de nível produção |
+| Antigravity Web Design | `skills/antigravity-web-design/SKILL.md` | `frontend`, `meta` | estável | Instruções nativas (DNA) do agente Antigravity para criação de interfaces web premium, responsivas e esteticamente ricas |
 | Web Design Guidelines | `skills/web-design-guidelines/SKILL.md` | `frontend`, `tools` | estável | Revisa arquivos de interface web contra diretrizes atualizadas e reporta findings em formato `file:line` |
 | Web Artifacts Builder | `skills/web-artifacts-builder/SKILL.md` | `frontend`, `tools` | estável | Criação de artifacts HTML complexos com React + Tailwind + shadcn e bundle final em arquivo único |
 | Generate Favicons RFG | `skills/generate-favicons-rfg/SKILL.md` | `tools`, `frontend` | estável | Gera pacote de favicons/manifest via RealFaviconGenerator e integra no projeto com atualização idempotente do `index.html` |
