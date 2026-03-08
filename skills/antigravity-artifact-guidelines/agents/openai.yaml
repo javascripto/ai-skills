@@ -1,0 +1,4 @@
+interface:
+  display_name: "Antigravity Artifact Guidelines"
+  short_description: "Applies the native rules for rich markdown generation, alerts, carousels and media embedding."
+  default_prompt: "Output technical documentation and code reviews utilizing rich markdown resources like carousels, mermaid diagrams, and GitHub-style alerts."

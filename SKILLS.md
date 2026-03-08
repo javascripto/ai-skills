@@ -24,6 +24,8 @@ Categorias oficiais para classificar skills atuais e futuras:
 | Manus Skill Creator | `skills/manus-skill-creator/SKILL.md` | `meta`, `docs` | estável | Skill de criação de skills orientada ao ecossistema Manus |
 | Codex Skill Creator | `skills/codex-skill-creator/SKILL.md` | `meta`, `docs` | estável | Skill de criação/atualização de skills para o fluxo Codex |
 | Antigravity Operational Framework | `skills/antigravity-operational-framework/SKILL.md` | `meta`, `docs` | estável | Diretrizes oficiais operacionais do agente para planejamento, execução e validação por artefatos |
+| Antigravity Knowledge System | `skills/antigravity-knowledge-system/SKILL.md` | `meta`, `docs` | estável | Estabelece as regras nativas de como o agente Antigravity deve rastrear, recuperar e validar a "memória de longo prazo arquitetural" (Knowledge Items) do repositório antes de pesquisar no código-fonte. |
+| Antigravity Artifact Guidelines | `skills/antigravity-artifact-guidelines/SKILL.md` | `meta`, `docs` | estável | Diretrizes oficiais para apresentação avançada de UI no chat, ensinando como projetar documentações, código e media visual em Markdown rico (Carrosséis, alertas nativos do Github, Diffs inline e relatórios encadeados de execução). |
 | Init Vite React TS | `skills/init-vite-react-ts/SKILL.md` | `frontend`, `tools` | estável | Cria/limpa a base de projeto Vite React TypeScript |
 | Add Tailwind + shadcn | `skills/add-tailwind-shadcn/SKILL.md` | `frontend`, `tools` | estável | Setup não-destrutivo de Tailwind v4 + shadcn |
 | Add shadcn Darkmode Theme | `skills/add-shadcn-darkmode-theme/SKILL.md` | `frontend` | estável | Provider e toggle de tema light/dark/system |
