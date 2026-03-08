@@ -20,7 +20,7 @@ Create symlinks from each skill in SOURCE to TARGET without overwriting existing
 
 Options:
   --source <dir>      Source directory containing skill folders (default: $DEFAULT_SOURCE)
-  --target <dir>      Codex skills directory (default: $DEFAULT_TARGET)
+  --target <dir>      Target skills directory (default: $DEFAULT_TARGET)
   --shared-dir <name> Include a shared directory even without SKILL.md (repeatable)
   --dry-run           Show what would be done without changing anything
   --no-relink-broken  Do not relink broken symlinks in target
