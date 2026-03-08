@@ -87,20 +87,31 @@ Você pode escolher entre duas skills de criação:
 
 ---
 
-## Sincronização com `~/.codex/skills`
+## Sincronização de Skills
 
-Este repositório inclui o script `scripts/sync_codex_skills.sh` para criar symlinks das skills locais em `~/.codex/skills` sem sobrescrever o que já existe.
+Este repositório usa apenas dois scripts de sync:
+
+- `scripts/sync_skills.sh`: engine central de sincronização (recebe `--target`)
+- `scripts/sync_targets.sh`: mapeia os destinos conhecidos (`codex`, `agents`, `claude`, `antigravity`, `all`) e invoca o script central
 
 Uso:
 
 ```bash
-./scripts/sync_codex_skills.sh
+./scripts/sync_targets.sh codex
+./scripts/sync_targets.sh agents
+./scripts/sync_targets.sh claude
+./scripts/sync_targets.sh antigravity
+./scripts/sync_targets.sh all
 ```
 
 Pré-visualização (sem alterar nada):
 
 ```bash
-./scripts/sync_codex_skills.sh --dry-run
+./scripts/sync_targets.sh codex --dry-run
+./scripts/sync_targets.sh agents --dry-run
+./scripts/sync_targets.sh claude --dry-run
+./scripts/sync_targets.sh antigravity --dry-run
+./scripts/sync_targets.sh all --dry-run
 ```
 
 Comportamento:
