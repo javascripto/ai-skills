@@ -43,6 +43,7 @@
         "useSelfClosingElements": "info"
       },
       "a11y": {
+        "useHtmlLang": "off",
         "noSvgWithoutTitle": "off",
         "noLabelWithoutControl": "info",
         "useKeyWithClickEvents": "off"
@@ -51,6 +52,12 @@
         "noStaticOnlyClass": "off"
       },
       "suspicious": {
+        "useIterableCallbackReturn": {
+          "level": "error",
+          "options": {
+            "checkForEach": false
+          }
+        },
         "noConsole": {
           "level": "error",
           "options": {
@@ -59,6 +66,9 @@
             ]
           }
         }
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "warn"
       }
     }
   },
@@ -92,6 +102,9 @@
     }
   },
   "css": {
+    "parser": {
+      "tailwindDirectives": true
+    },
     "formatter": {
       "enabled": true,
       "indentWidth": 2,

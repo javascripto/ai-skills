@@ -15,6 +15,11 @@ Padronizar projetos para usar Biome como ferramenta única de lint/format/check,
 - Em projeto grande já existente, não rodar formatação em massa antes do primeiro commit da migração para Biome.
 - Em projeto legado, preferir validação sem escrita no início (`npx @biomejs/biome check .`) e deixar `--write` para etapa controlada.
 - Rodar validações finais e comandos potencialmente amplos somente após confirmação explícita do usuário.
+- Em projetos com shadcn/ui, ignorar `src/components/ui/**/*` no Biome para não reformatar componentes gerados que seguem padrão próprio.
+- Em projetos com Tailwind v4 (`@custom-variant`, `@theme`, `@apply`), habilitar `css.parser.tailwindDirectives: true`.
+- Em SPA que não devem usar `lang` em `<html>` por decisão de produto/compatibilidade, desabilitar `a11y.useHtmlLang`.
+- Se o time quiser permitir `return` dentro de callback de `forEach`, manter `useIterableCallbackReturn` ativo mas com `options.checkForEach: false`.
+- Se o projeto quiser reduzir bloqueios em hooks React durante migração, usar `correctness.useExhaustiveDependencies: "warn"`.
 
 ## Workflow
 
@@ -84,6 +89,71 @@ Usar como referência:
 
 - Config legado base: [`references/biome-1.9.3.reference.json`](references/biome-1.9.3.reference.json)
 - Config migrado para 2.4.6: [`references/biome-2.4.6.migrated.reference.json`](references/biome-2.4.6.migrated.reference.json)
+
+Para projetos com shadcn/ui, garantir também no `files.includes`:
+
+```json
+["**", "!**/node_modules", "!dist/**/*", "!src/components/ui/**/*"]
+```
+
+Para projetos com Tailwind v4, garantir:
+
+```json
+{
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  }
+}
+```
+
+Se o projeto SPA optar por não usar `lang` no `index.html`, ajustar:
+
+```json
+{
+  "linter": {
+    "rules": {
+      "a11y": {
+        "useHtmlLang": "off"
+      }
+    }
+  }
+}
+```
+
+Se quiser suprimir alertas de `forEach` retornando valor (sem desativar a regra para outros iterables), ajustar:
+
+```json
+{
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "useIterableCallbackReturn": {
+          "level": "error",
+          "options": {
+            "checkForEach": false
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Se quiser tratar `useExhaustiveDependencies` como aviso (sem bloquear lint):
+
+```json
+{
+  "linter": {
+    "rules": {
+      "correctness": {
+        "useExhaustiveDependencies": "warn"
+      }
+    }
+  }
+}
+```
 
 ## 4) Ajustar scripts npm e lint-staged
 
