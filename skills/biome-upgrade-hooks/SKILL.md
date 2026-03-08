@@ -176,7 +176,7 @@ Garantir `lint-staged` com foco em JS/TS/JSON:
 {
   "lint-staged": {
     "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
-      "biome check --write --organize-imports-enabled=true"
+      "biome check --write"
     ]
   }
 }
