@@ -51,6 +51,9 @@
       "complexity": {
         "noStaticOnlyClass": "off"
       },
+      "correctness": {
+        "useExhaustiveDependencies": "warn"
+      },
       "suspicious": {
         "useIterableCallbackReturn": {
           "level": "error",
@@ -62,13 +65,13 @@
           "level": "error",
           "options": {
             "allow": [
-              "log"
+              "assert",
+              "error",
+              "info",
+              "warn"
             ]
           }
         }
-      },
-      "correctness": {
-        "useExhaustiveDependencies": "warn"
       }
     }
   },

@@ -46,9 +46,9 @@ npx biome check --write $CHANGED_TSX
 {
   "scripts": {
     "prepare": "husky",
-    "lint": "npx @biomejs/biome lint --write",
-    "format": "npx @biomejs/biome format --write",
-    "biome:check": "npx @biomejs/biome check --write"
+    "lint": "biome lint --write",
+    "format": "biome format --write",
+    "biome:check": "biome check --write"
   },
   "lint-staged": {
     "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [

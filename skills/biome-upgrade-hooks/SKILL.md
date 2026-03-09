@@ -1,6 +1,6 @@
 ---
 name: biome-upgrade-hooks
-description: "Migrar projetos JavaScript/TypeScript para Biome como substituto de ESLint e Prettier, atualizar Biome/Husky/lint-staged para versões recentes, configurar scripts npm e hooks Git (pre-commit/pre-push), e adaptar biome.json de versões antigas (ex.: 1.9.3) para a versão atual. Usar quando o pedido envolver padronização de lint/format com Biome, remoção de legado ESLint/Prettier, ou ajuste de validações antes de commit/push."
+description: "Migrar projetos JavaScript/TypeScript para Biome como substituto de ESLint e Prettier, atualizar Biome/Husky/lint-staged para versões recentes, configurar scripts npm e hooks Git (pre-commit/pre-push), e adaptar biome.json para a estrutura atual do Biome 2.4.6. Usar quando o pedido envolver padronização de lint/format com Biome, remoção de legado ESLint/Prettier, ou ajuste de validações antes de commit/push."
 ---
 
 # Biome Upgrade Hooks
@@ -73,7 +73,39 @@ Nota de referência histórica (apenas contexto): em 2026-03-08, versões observ
 
 ## 3) Migrar e validar biome.json
 
-Se existir config antiga (ex.: schema `1.9.3`), migrar automaticamente:
+Antes de editar `biome.json` ou `biome.jsonc`, abrir obrigatoriamente a referência 2.4.6 abaixo e usá-la durante a migração:
+
+- Config base no schema atual: [`references/biome-2.4.6.migrated.reference.json`](references/biome-2.4.6.migrated.reference.json)
+
+Regra operacional:
+
+- Se `biome.json` ou `biome.jsonc` não existir, criar o arquivo a partir de `references/biome-2.4.6.migrated.reference.json` e só depois adaptar exclusões, regras e exceções do projeto.
+- Se a config existir, mas estiver incompleta ou sem blocos relevantes da estrutura 2.4.6, copiar a referência 2.4.6 como baseline local e fazer merge não-destrutivo das customizações do projeto em cima dela.
+- Se a config atual estiver em schema antigo ou formato legado, migrar para o schema atual e usar a referência 2.4.6 como alvo estrutural final.
+- Sempre abrir `references/biome-2.4.6.migrated.reference.json` antes de propor ou aplicar a config final, para garantir que a saída use a estrutura do schema 2.4.6.
+- Não confiar só no `biome migrate --write`; comparar o resultado migrado com a referência 2.4.6 e ajustar manualmente quando faltarem blocos relevantes como `assist`, `files.includes`, `css.parser.tailwindDirectives` ou overrides de regras.
+
+Fluxo recomendado para aplicar a referência:
+
+1. Copiar `references/biome-2.4.6.migrated.reference.json` para o projeto como base de trabalho.
+2. Se já houver `biome.json` ou `biome.jsonc`, portar manualmente apenas as decisões ainda válidas do projeto que não contradigam a referência.
+3. Manter as preferências da referência como fonte de verdade para estilo e formatter. Se o projeto usava algo diferente antes da migração, não preservar automaticamente opções como `quoteStyle`, `jsxQuoteStyle`, `semicolons`, `trailingCommas`, `indentStyle`, `indentWidth` ou `lineWidth`.
+4. Ajustar somente os trechos específicos do projeto, como paths ignorados, regras temporariamente relaxadas e integrações como Tailwind ou shadcn/ui.
+5. Validar com `npx @biomejs/biome check .` antes de seguir para scripts e hooks.
+
+Regra de precedência:
+
+- Quando houver conflito entre preferências já existentes do projeto e a referência 2.4.6, a referência vence para opções de estilo e formatação.
+- Exemplo: se a referência usa `quoteStyle: "single"` e o projeto usava aspas duplas, manter `single` na config final do Biome.
+- Preservar do projeto apenas o que for contextual, como exclusões de arquivos, integrações necessárias, relaxamentos temporários de regras e exceções deliberadas do time.
+
+Exemplo de bootstrap quando o projeto ainda não tiver config:
+
+```bash
+cp path/to/references/biome-2.4.6.migrated.reference.json biome.json
+```
+
+Se existir config antiga, migrar automaticamente:
 
 ```bash
 npx @biomejs/biome migrate --write
@@ -85,10 +117,14 @@ Depois validar:
 npx @biomejs/biome check .
 ```
 
-Usar como referência:
+Checklist mínimo pós-migração com base na referência 2.4.6:
 
-- Config legado base: [`references/biome-1.9.3.reference.json`](references/biome-1.9.3.reference.json)
-- Config migrado para 2.4.6: [`references/biome-2.4.6.migrated.reference.json`](references/biome-2.4.6.migrated.reference.json)
+- conferir `$schema` do Biome 2.4.6
+- conferir presença e estrutura de `assist.actions.source.organizeImports`
+- conferir `files.includes` e exclusões comuns do projeto
+- conferir `formatter`, `javascript.formatter`, `json.formatter` e `css.formatter`, preservando os valores da referência para estilo
+- conferir `css.parser.tailwindDirectives` quando houver Tailwind v4
+- conferir regras customizadas em `linter.rules`
 
 Para projetos com shadcn/ui, garantir também no `files.includes`:
 
@@ -260,6 +296,7 @@ Confirmar que:
 
 ## Resource Usage Notes
 
-- Ler [`references/biome-1.9.3.reference.json`](references/biome-1.9.3.reference.json) somente para espelhar regras legadas.
-- Ler [`references/biome-2.4.6.migrated.reference.json`](references/biome-2.4.6.migrated.reference.json) para ajustes pós-migração no schema novo.
+- Ler obrigatoriamente [`references/biome-2.4.6.migrated.reference.json`](references/biome-2.4.6.migrated.reference.json) sempre que tocar em `biome.json` ou `biome.jsonc`; ela é a base da estrutura final esperada no schema 2.4.6.
+- Copiar essa referência para o projeto quando a config estiver ausente ou incompleta; depois fazer merge não-destrutivo das necessidades locais, em vez de tentar reconstruir a estrutura 2.4.6 manualmente do zero.
+- Em conflitos de estilo e formatter, seguir a referência e não o legado do projeto.
 - Copiar os snippets de [`references/hooks-reference.md`](references/hooks-reference.md) para `.husky/pre-commit` e `.husky/pre-push`.
