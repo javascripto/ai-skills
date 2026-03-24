@@ -33,6 +33,9 @@ shift
 sync_target() {
   local target_dir="$1"
   shift
+  if [[ ! -d "$target_dir" ]]; then
+    mkdir -p "$target_dir"
+  fi
   "$SCRIPT_DIR/sync_skills.sh" --target "$target_dir" "$@"
 }
 
