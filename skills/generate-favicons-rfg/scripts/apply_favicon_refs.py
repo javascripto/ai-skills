@@ -27,11 +27,11 @@ def normalize_snippet(raw: str) -> str:
     return "\n".join(pieces)
 
 
-def render_block(snippet: str) -> str:
+def render_block(snippet: str, indent: str = "  ") -> str:
     normalized = normalize_snippet(snippet)
-    lines = [START_MARKER]
-    lines.extend(normalized.splitlines())
-    lines.append(END_MARKER)
+    lines = [f"{indent}{START_MARKER}"]
+    lines.extend(f"{indent}{line}" for line in normalized.splitlines())
+    lines.append(f"{indent}{END_MARKER}")
     return "\n".join(lines)
 
 
@@ -40,8 +40,8 @@ def upsert_favicon_block(index_html_path: Path, block: str) -> bool:
 
     if START_MARKER in content and END_MARKER in content:
         pattern = re.compile(
-            re.escape(START_MARKER) + r".*?" + re.escape(END_MARKER),
-            flags=re.DOTALL,
+            r"^[ \t]*" + re.escape(START_MARKER) + r".*?^[ \t]*" + re.escape(END_MARKER),
+            flags=re.DOTALL | re.MULTILINE,
         )
         new_content = pattern.sub(block, content, count=1)
     else:
@@ -53,7 +53,7 @@ def upsert_favicon_block(index_html_path: Path, block: str) -> bool:
         if pos == -1:
             raise RuntimeError(f"Could not find </head> in {index_html_path}")
 
-        insertion = "\n  " + block.replace("\n", "\n  ") + "\n"
+        insertion = "\n" + block + "\n"
         new_content = content[:pos] + insertion + content[pos:]
 
     changed = new_content != content
@@ -62,7 +62,12 @@ def upsert_favicon_block(index_html_path: Path, block: str) -> bool:
     return changed
 
 
-def merge_manifest(existing_path: Path, generated_path: Path) -> bool:
+def merge_manifest(
+    existing_path: Path,
+    generated_path: Path,
+    name_override: str | None = None,
+    short_name_override: str | None = None,
+) -> bool:
     generated = json.loads(generated_path.read_text(encoding="utf-8"))
 
     if existing_path.exists():
@@ -91,6 +96,11 @@ def merge_manifest(existing_path: Path, generated_path: Path) -> bool:
 
     if "screenshots" in generated and "screenshots" not in merged:
         merged["screenshots"] = generated["screenshots"]
+
+    if name_override:
+        merged["name"] = name_override
+    if short_name_override:
+        merged["short_name"] = short_name_override
 
     changed = merged != existing
     if changed:
@@ -124,6 +134,22 @@ def main() -> int:
         default="site.webmanifest.rfg.generated.json",
         help="Generated manifest filename relative to public dir",
     )
+    parser.add_argument(
+        "--name",
+        default=None,
+        help="Override web app manifest `name`",
+    )
+    parser.add_argument(
+        "--short-name",
+        default=None,
+        help="Override web app manifest `short_name`",
+    )
+    parser.add_argument(
+        "--cleanup-rfg-artifacts",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Remove temporary RFG instruction/manifest files after apply (default: true)",
+    )
     args = parser.parse_args()
 
     project_root = Path(args.project_root).expanduser().resolve()
@@ -150,11 +176,25 @@ def main() -> int:
     manifest_path = public_dir / "site.webmanifest"
     manifest_changed = False
     if generated_manifest_path.exists():
-        manifest_changed = merge_manifest(manifest_path, generated_manifest_path)
+        manifest_changed = merge_manifest(
+            manifest_path,
+            generated_manifest_path,
+            name_override=args.name,
+            short_name_override=args.short_name,
+        )
+
+    cleaned_files: list[str] = []
+    if args.cleanup_rfg_artifacts:
+        for candidate in (snippet_path, generated_manifest_path):
+            if candidate.exists():
+                candidate.unlink()
+                cleaned_files.append(str(candidate))
 
     print("[OK] Applied favicon references")
     print(f"- index.html updated: {html_changed}")
     print(f"- site.webmanifest updated: {manifest_changed}")
+    if args.cleanup_rfg_artifacts:
+        print(f"- cleaned temp files: {len(cleaned_files)}")
     print(f"- marker block: {START_MARKER} ... {END_MARKER}")
     return 0
 

@@ -31,6 +31,21 @@ python3 scripts/apply_favicon_refs.py \
   --project-root /absolute/path/to/project
 ```
 
+Apply references and force manifest names:
+```bash
+python3 scripts/apply_favicon_refs.py \
+  --project-root /absolute/path/to/project \
+  --name "Pocket Offline" \
+  --short-name "Pocket"
+```
+
+Keep generated helper files (default is cleanup after apply):
+```bash
+python3 scripts/apply_favicon_refs.py \
+  --project-root /absolute/path/to/project \
+  --no-cleanup-rfg-artifacts
+```
+
 Optional headed run for debugging:
 ```bash
 python3 scripts/generate_favicons_playwright.py \
@@ -61,6 +76,10 @@ Apply script updates:
 - `public/site.webmanifest` with conservative merge:
   - Always refresh `icons` from generated manifest.
   - Preserve existing app metadata by default.
+  - If `--name` and/or `--short-name` are provided, force-update these fields.
+- Temporary RFG helper files are cleaned by default after apply:
+  - `public/favicon-instructions.rfg.html`
+  - `public/site.webmanifest.rfg.generated.json`
 
 ## Decision Rules
 - Prefer this skill when user explicitly wants RealFaviconGenerator output.
