@@ -1,0 +1,4 @@
+interface:
+  display_name: "Play Audio"
+  short_description: "Reproduza audio local no sistema"
+  default_prompt: "Use $play-audio to reproduce a local audio file on this machine."
