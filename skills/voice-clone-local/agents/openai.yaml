@@ -1,0 +1,6 @@
+interface:
+  display_name: "Voice Clone Local"
+  short_description: "Clona voz localmente com Qwen3-TTS Base e referência de áudio."
+  icon_small: "../_shared/assets/generic-skill-icon.svg"
+  icon_large: "../_shared/assets/generic-skill-icon.svg"
+  default_prompt: "Use $voice-clone-local para clonar voz localmente com Qwen3-TTS Base. Prepare um ref_audio limpo, gere ou confirme o ref_text exato, prefira WAV mono 24 kHz, e compare fidelidade, sotaque pt-BR e tempo de geração antes de concluir."
