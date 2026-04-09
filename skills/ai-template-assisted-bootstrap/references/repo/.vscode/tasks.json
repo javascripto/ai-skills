@@ -1,0 +1,71 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "make: build",
+      "type": "shell",
+      "command": "make build",
+      "group": "build",
+      "problemMatcher": [],
+      "icon": {
+        "color": "terminal.ansiCyan",
+        "id": "gear"
+      }
+    },
+    {
+      "label": "make: stop",
+      "type": "shell",
+      "command": "make stop",
+      "group": "none",
+      "problemMatcher": [],
+      "icon": {
+        "color": "terminal.ansiRed",
+        "id": "debug-stop"
+      }
+    },
+    {
+      "label": "make: run",
+      "type": "shell",
+      "command": "make run",
+      "group": "test",
+      "problemMatcher": [],
+      "icon": {
+        "color": "terminal.ansiGreen",
+        "id": "debug-start"
+      }
+    },
+    {
+      "label": "make: test",
+      "type": "shell",
+      "command": "make test",
+      "group": "test",
+      "problemMatcher": [],
+      "icon": {
+        "color": "terminal.ansiBlue",
+        "id": "beaker"
+      }
+    },
+    {
+      "label": "make: debug",
+      "type": "shell",
+      "command": "make debug",
+      "group": "none",
+      "problemMatcher": [],
+      "icon": {
+        "color": "terminal.ansiYellow",
+        "id": "debug-alt"
+      }
+    },
+    {
+      "label": "make: clean",
+      "type": "shell",
+      "command": "make clean",
+      "group": "none",
+      "problemMatcher": [],
+      "icon": {
+        "color": "terminal.ansiMagenta",
+        "id": "trash"
+      }
+    }
+  ]
+}

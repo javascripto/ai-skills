@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bootstrap de Template de Desenvolvimento Assistido por IA"
+  short_description: "Cria templates de repositório para IA"
+  default_prompt: "Use $ai-template-assisted-bootstrap para preparar um repositório como um template mínimo de desenvolvimento assistido por IA com hub central em docs/ai/AGENTS.md, ponteiros curtos na raiz, contrato genérico de Makefile, tasks do VS Code e um .gitignore mesclado."
