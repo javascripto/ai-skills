@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conversation Handoff"
+  short_description: "Condense chats into next-chat Markdown"
+  default_prompt: "Use $handoff-packager to condense the current conversation into a concise recap, start point, next steps, and a copyable markdown handoff for the next chat; prefer relative links for the same project and only use absolute paths when the handoff is for a different workspace or project; suggest starting a fresh chat when the thread is getting long."
