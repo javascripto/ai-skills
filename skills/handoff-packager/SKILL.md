@@ -18,18 +18,35 @@ Turn the current conversation into a short handoff that makes the next chat easy
 
 ## Output Rules
 
-- Keep everything outside the markdown block very short.
-- Outside the markdown block, provide only:
+- Keep everything outside the markdown blocks very short.
+- Outside the blocks, provide only:
   - `Título da conversa atual`
   - `Título da próxima conversa`
-  - 1 brief line telling the user to copy the block into the new chat
+  - 1 brief line telling the user the file was saved and to copy the short block into the new chat
+- Conversation titles must include a sequential number prefix, e.g. `#1 — Setup do projeto`, `#2 — Autenticação`, `#3 — Deploy`. Infer the current number from the existing title if it already has one; otherwise start at `#1`. The next conversation title always increments by 1.
 - The copied content must be only markdown.
-- Do not repeat the outside instructions inside the copied markdown.
-- Make the markdown block self-contained and ready to paste into the next conversation.
+- Do not repeat the outside instructions inside any copied markdown.
 - If the conversation is in interactive mode and the thread is getting long, ask the user whether they want to generate the handoff now and start a fresh chat from it.
 - Prefer splitting work into smaller chats by part, topic, domain, or limit when that helps keep context smaller.
 - Use relative paths in markdown by default when the next chat will continue in the same project/workspace.
 - Use absolute paths only when the handoff is meant for a different project, a different workspace, or a context where relative paths would not resolve.
+
+## File Output
+
+Save the full handoff markdown to `handoff/<filename>.md` in the current project directory. Choose a filename that is descriptive and date-prefixed, e.g. `handoff/2025-04-11-feature-auth.md`. Create the `handoff/` directory if it does not exist.
+
+## Two-Block Output
+
+After saving the file, produce two separate markdown blocks:
+
+**Block 1 — Full handoff** (for reference and verification): the complete handoff content as defined in `Markdown Block Shape`. This is what gets saved to disk and what the user can inspect.
+
+**Block 2 — Short reference block** (the one to copy into the next chat): a compact snippet that only contains:
+- a pointer to the saved file so the next agent reads it for full context
+- a short `## Next Steps` section with the first 2–4 concrete actions
+- any single critical constraint worth repeating inline
+
+The short block should be under 15 lines. Its purpose is to reduce what the user pastes — the next agent reads the file for everything else.
 
 ## What To Capture
 
@@ -79,6 +96,21 @@ Use a compact structure like this:
 ...
 
 ## Prompt Log
+...
+```
+
+## Short Reference Block Shape
+
+```markdown
+# Handoff
+
+> Full context: `handoff/2025-04-11-feature-auth.md`
+
+## Next Steps
+- [ ] ...
+- [ ] ...
+
+## Key Constraint
 ...
 ```
 
