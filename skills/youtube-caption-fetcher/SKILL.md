@@ -18,9 +18,16 @@ python3 scripts/fetch_youtube_captions.py "<youtube-url>" \
 
 ## Arquivos de saída gerados
 - `caption_file`: arquivo principal de legenda (`.srt` ou `.vtt`) no `--output-dir`
-- `timed_text_file` (quando `--timed-text`): `<nome>.timed.txt` com formato `[start --> end] texto`
+- `timed_text_file` (quando `--timed-text --timed-raw`): `<nome>.timed.txt` com formato `[start --> end] texto`
 - `timed_text_clean_file` (quando `--timed-text`): `<nome>.timed.clean.txt` com parciais/duplicatas adjacentes consolidadas
 - Se `.srt` não estiver disponível para a fonte, o `caption_file` cai automaticamente para `.vtt`
+
+Uso recomendado:
+- Para resumo, análise ou RAG, prefira `timed_text_clean_file`.
+- Por padrão, a skill remove o `timed_text_file` bruto e o `caption_file` depois de gerar o arquivo limpo.
+- Use `--timed-raw` para manter o `timed_text_file`.
+- Use `--keep-caption-file` para manter o `caption_file`.
+- Se a legenda vier muito fragmentada, a versão limpa costuma ser a melhor base para leitura humana e para sumarização.
 
 Fallback logic:
 - `original`: original language -> first manual -> first auto-caption

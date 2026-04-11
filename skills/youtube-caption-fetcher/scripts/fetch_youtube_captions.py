@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 from typing import Iterable, Optional
 
-from ytdlp_client import download_subtitles, extract_metadata, find_latest_caption
+from ytdlp_client import caption_keys, download_subtitles, extract_metadata, find_latest_caption
 
 
 def fail(msg: str, code: int = 1) -> None:
@@ -48,8 +48,8 @@ def pick_language(
     manual_subs: dict,
     auto_subs: dict,
 ) -> tuple[str, str]:
-    manual_keys = list(manual_subs.keys())
-    auto_keys = list(auto_subs.keys())
+    manual_keys = caption_keys(manual_subs)
+    auto_keys = caption_keys(auto_subs)
 
     if mode == "pt-br":
         wanted = ptbr_candidates()
@@ -70,6 +70,17 @@ def pick_language(
             return sorted(manual_keys)[0], "manual"
         if auto_keys:
             return sorted(auto_keys)[0], "auto"
+        # Some videos expose incomplete metadata through yt-dlp unless a JS
+        # runtime is available. Fall back to the common caption languages so
+        # the workflow still reaches real subtitles instead of live chat.
+        wanted = ["pt-orig", "pt", "en"]
+        manual_match = find_lang_key(manual_keys, wanted)
+        if manual_match:
+            return manual_match, "manual"
+        auto_match = find_lang_key(auto_keys, wanted)
+        if auto_match:
+            return auto_match, "auto"
+        return wanted[0], "auto"
     else:
         fallback = ["en", "en-US", "en-GB"]
         manual_match = find_lang_key(manual_keys, fallback)
@@ -82,6 +93,7 @@ def pick_language(
             return sorted(manual_keys)[0], "manual"
         if auto_keys:
             return sorted(auto_keys)[0], "auto"
+        return fallback[0], "auto"
 
     fail("no subtitles or auto-captions found for this video")
     raise AssertionError("unreachable")
@@ -247,7 +259,17 @@ def main() -> None:
     parser.add_argument(
         "--timed-text",
         action="store_true",
-        help="Also generate a plain text file preserving each caption timestamp",
+        help="Also generate a cleaned plain text file preserving the important caption timestamps",
+    )
+    parser.add_argument(
+        "--timed-raw",
+        action="store_true",
+        help="Keep the raw timed text file alongside the cleaned version",
+    )
+    parser.add_argument(
+        "--keep-caption-file",
+        action="store_true",
+        help="Keep the downloaded caption file after generating timed text outputs",
     )
     args = parser.parse_args()
 
@@ -293,10 +315,16 @@ def main() -> None:
     if args.timed_text:
         text_file = caption_file.with_suffix(".timed.txt")
         caption_to_timed_text(caption_file, text_file)
-        print(f"timed_text_file={text_file}")
         cleaned_text_file = caption_file.with_suffix(".timed.clean.txt")
         clean_partial_duplicates(text_file, cleaned_text_file)
         print(f"timed_text_clean_file={cleaned_text_file}")
+        if args.timed_raw:
+            print(f"timed_text_file={text_file}")
+        else:
+            text_file.unlink(missing_ok=True)
+
+    if not args.keep_caption_file:
+        caption_file.unlink(missing_ok=True)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import subprocess
 from pathlib import Path
 from typing import Any, Optional
 
@@ -18,6 +19,13 @@ def extract_metadata(url: str) -> dict[str, Any]:
     return info
 
 
+def caption_keys(subs: dict[str, Any]) -> list[str]:
+    # yt-dlp can expose live chat as a "subtitle" track, but that is not a
+    # useful caption source for summarization. Keep it out of the selection
+    # flow so we only choose real subtitles / auto-captions.
+    return [key for key in subs.keys() if key.strip().lower().replace("_", "-") != "live-chat"]
+
+
 def download_subtitles(
     url: str,
     output_dir: Path,
@@ -25,23 +33,27 @@ def download_subtitles(
     source: str,
     caption_format: str,
 ) -> None:
-    opts = {
-        "quiet": True,
-        "no_warnings": True,
-        "skip_download": True,
-        "outtmpl": str(output_dir / "%(id)s.%(language)s.%(ext)s"),
-        "subtitleslangs": [lang],
-        "subtitlesformat": "vtt",
-        "writesubtitles": source == "manual",
-        "writeautomaticsub": source == "auto",
-    }
+    cmd = [
+        "yt-dlp",
+        "--skip-download",
+        "--sub-langs",
+        lang,
+        "-o",
+        str(output_dir / "%(title)s [%(id)s].%(ext)s"),
+    ]
+    if source == "manual":
+        cmd.append("--write-subs")
+    else:
+        cmd.append("--write-auto-subs")
     if caption_format == "srt":
-        opts["convertsubtitles"] = "srt"
+        cmd.append("--convert-subs")
+        cmd.append("srt")
 
-    with YoutubeDL(opts) as ydl:
-        ydl.download([url])
+    subprocess.run(cmd + [url], check=True)
 
 
 def find_latest_caption(output_dir: Path, video_id: str, extension: str) -> Optional[Path]:
-    matches = sorted(output_dir.glob(f"{video_id}*.{extension}"), key=lambda p: p.stat().st_mtime)
+    matches = sorted(output_dir.glob(f"*{video_id}*.{extension}"), key=lambda p: p.stat().st_mtime)
+    if not matches:
+        matches = sorted(output_dir.glob(f"*.{extension}"), key=lambda p: p.stat().st_mtime)
     return matches[-1] if matches else None
