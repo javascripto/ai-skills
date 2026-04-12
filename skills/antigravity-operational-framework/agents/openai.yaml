@@ -1,4 +1,0 @@
-interface:
-  display_name: "Antigravity Framework"
-  short_description: "Applies the native operational framework and DNA guidelines of the Antigravity agent."
-  default_prompt: "Operate using the strict Antigravity framework: plan comprehensively, execute atomically, and verify autonomously."

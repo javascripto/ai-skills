@@ -21,11 +21,24 @@ Categorias oficiais para classificar skills atuais e futuras:
 
 | Skill | Caminho | Categorias | Status | Notas |
 |---|---|---|---|---|
-| Manus Skill Creator | `skills/manus-skill-creator/SKILL.md` | `meta`, `docs` | estável | Skill de criação de skills orientada ao ecossistema Manus |
-| Codex Skill Creator | `skills/codex-skill-creator/SKILL.md` | `meta`, `docs` | estável | Skill de criação/atualização de skills para o fluxo Codex |
-| Antigravity Operational Framework | `skills/antigravity-operational-framework/SKILL.md` | `meta`, `docs` | estável | Diretrizes oficiais operacionais do agente para planejamento, execução e validação por artefatos |
-| Antigravity Knowledge System | `skills/antigravity-knowledge-system/SKILL.md` | `meta`, `docs` | estável | Estabelece as regras nativas de como o agente Antigravity deve rastrear, recuperar e validar a "memória de longo prazo arquitetural" (Knowledge Items) do repositório antes de pesquisar no código-fonte. |
-| Antigravity Artifact Guidelines | `skills/antigravity-artifact-guidelines/SKILL.md` | `meta`, `docs` | estável | Diretrizes oficiais para apresentação avançada de UI no chat, ensinando como projetar documentações, código e media visual em Markdown rico (Carrosséis, alertas nativos do Github, Diffs inline e relatórios encadeados de execução). |
+| Init Vite React TS | `skills/init-vite-react-ts/SKILL.md` | `frontend`, `tools` | estável | Cria/limpa a base de projeto Vite React TypeScript |
+| Add Tailwind + shadcn | `skills/add-tailwind-shadcn/SKILL.md` | `frontend`, `tools` | estável | Setup não-destrutivo de Tailwind v4 + shadcn |
+| Add shadcn Darkmode Theme | `skills/add-shadcn-darkmode-theme/SKILL.md` | `frontend` | estável | Provider e toggle de tema light/dark/system |
+| Web Design Guidelines | `skills/web-design-guidelines/SKILL.md` | `frontend`, `tools` | estável | Revisa arquivos de interface web contra diretrizes atualizadas e reporta findings em formato `file:line` |
+| Generate Favicons RFG | `skills/generate-favicons-rfg/SKILL.md` | `tools`, `frontend` | estável | Gera pacote de favicons/manifest via RealFaviconGenerator e integra no projeto com atualização idempotente do `index.html` |
+| Biome Upgrade Hooks | `skills/biome-upgrade-hooks/SKILL.md` | `tools` | estável | Migra projetos de ESLint/Prettier para Biome, atualiza Husky/lint-staged, configura hooks pre-commit/pre-push e aplica guardrails para projetos legados |
+| Find Skills | `skills/find-skills/SKILL.md` | `tools`, `meta` | estável | Descobre e instala skills via `npx skills` quando o usuário precisa de capacidades adicionais |
+| shadcn | `skills/shadcn/SKILL.md` | `frontend`, `tools` | estável | Gerencia setup, busca, adição e manutenção de componentes/projetos shadcn/ui com regras de composição/estilo |
+| Validate TISS | `skills/validate-tiss/SKILL.md` | `tools`, `backend` | estável | Valida XML TISS 3.x via API do validadortiss.com.br com fluxo de autenticação e relogin automático |
+| YouTube Caption Fetcher | `skills/youtube-caption-fetcher/SKILL.md` | `media`, `tools` | estável | Busca legendas do YouTube com fallback para download de áudio |
+| YouTube Thumbnail Links | `skills/youtube-thumbnail-links/SKILL.md` | `media`, `tools` | estável | Gera links de thumbnails do YouTube em múltiplos tamanhos a partir de URL ou video ID, com saída plain/Markdown/JSON |
+| YouTube Video Info | `skills/youtube-video-info/SKILL.md` | `media`, `tools` | estável | Extrai metadados comuns de vídeos do YouTube (título, descrição, canal, duração, data e contadores) em formatos plain/Markdown/JSON |
+| Instagram Caption Fetcher | `skills/instagram-caption-fetcher/SKILL.md` | `media`, `tools` | estável | Extrai legendas do Instagram com fallback para transcrição de áudio |
+| Local Faster Whisper Transcribe | `skills/local-faster-whisper-transcribe/SKILL.md` | `media`, `tools` | estável | Transcreve áudio/vídeo localmente com faster-whisper (offline) |
+| Local TTS PT-BR | `skills/local-tts-ptbr/SKILL.md` | `media`, `tools` | estável | Gera texto para fala local em português brasileiro com Piper ou Kokoro |
+| Voice Clone Local | `skills/voice-clone-local/SKILL.md` | `media`, `tools` | estável | Clona uma voz localmente com Qwen3-TTS Base usando áudio de referência e transcrição |
+| Play Audio | `skills/play-audio/SKILL.md` | `media`, `tools` | estável | Reproduz arquivos de áudio locais no macOS, Linux ou Windows |
+| Handoff Packager | `skills/handoff-packager/SKILL.md` | `tools`, `meta` | estável | Condensa uma conversa em um handoff compacto para o próximo chat |
 | Init Vite React TS | `skills/init-vite-react-ts/SKILL.md` | `frontend`, `tools` | estável | Cria/limpa a base de projeto Vite React TypeScript |
 | Add Tailwind + shadcn | `skills/add-tailwind-shadcn/SKILL.md` | `frontend`, `tools` | estável | Setup não-destrutivo de Tailwind v4 + shadcn |
 | Add shadcn Darkmode Theme | `skills/add-shadcn-darkmode-theme/SKILL.md` | `frontend` | estável | Provider e toggle de tema light/dark/system |

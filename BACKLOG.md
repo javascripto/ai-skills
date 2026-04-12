@@ -2,8 +2,6 @@
 
 ## Concluídas
 
-- [x] Skill de criar skills (manus) (`skills/manus-skill-creator`)
-- [x] Skill de criar skills (codex) (`skills/codex-skill-creator`)
 - [x] Criar app Vite React TypeScript atualizado (`skills/init-vite-react-ts`)
 - [x] Limpar projeto Vite (incluído na skill de init)
 - [x] Instalar Tailwind (`skills/add-tailwind-shadcn`)

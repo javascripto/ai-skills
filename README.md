@@ -78,12 +78,6 @@ Princípios de autoria:
 Para lista de skills ativas, status e categorias, use somente `SKILLS.md`.
 O `README.md` descreve convenções e objetivos gerais, sem replicar o inventário.
 
-## Escolha de Skill para Criar Skills
-
-Você pode escolher entre duas skills de criação:
-
-- `skills/manus-skill-creator/SKILL.md`: fluxo mais amplo/original para criação de skills.
-- `skills/codex-skill-creator/SKILL.md`: fluxo enxuto focado em criação/atualização de skills para Codex.
 
 ---
 

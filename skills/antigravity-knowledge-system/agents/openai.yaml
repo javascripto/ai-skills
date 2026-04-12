@@ -1,4 +1,0 @@
-interface:
-  display_name: "Antigravity Knowledge System"
-  short_description: "Applies rules for long term memory recovery via Knowledge Items (KIs)."
-  default_prompt: "Mandatorily fetch and read Knowledge Items summaries and KIs before touching architecture."
