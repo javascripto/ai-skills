@@ -29,6 +29,62 @@ Observações importantes:
 say -v "Fernanda" -r 300 "Texto que será lido"
 ```
 
+### Escapando caracteres especiais
+
+Alguns shells interativos (especialmente `zsh` e `bash` com history expansion ativado) podem interpretar caracteres como `!` quando você passa texto como argumento. Como este script espera o texto como argumento, recomenda-se sempre escapar ou usar aspas que previnam expansões antes de chamar o script.
+
+Recomendações ao passar o texto como argumento:
+
+- Use aspas simples quando possível (evita expansão de histórico e expansão de variáveis):
+
+```bash
+./scripts/say_fernanda.sh 'Olá! Este texto tem exclamação!'
+```
+
+- Se precisar usar aspas duplas, escape o `!` com `\!` para evitar history expansion:
+
+```bash
+./scripts/say_fernanda.sh "Olá\! Teste com exclamação"
+```
+
+- Alternativamente, escape apenas o `!` dentro de aspas duplas:
+
+```bash
+./scripts/say_fernanda.sh "Isso é uma exclamação: \!"
+```
+
+Observação: o `say` wrapper aqui aceita o texto via argumento (`$*`). Se preferir evitar quaisquer problemas de expansão ao construir a string dinamicamente, construa e passe o argumento de forma segura no cliente que chama o script (por exemplo, usando APIs que evitem a passagem direta pela linha de comando).
+
+#### Outros caracteres problemáticos
+
+Além de `!`, vários outros caracteres podem causar interpretação pelo shell ou pela camada que constrói a linha de comando. Exemplos comuns:
+
+- `$` (expansão de variáveis)
+- `` ` `` (command substitution)
+- `"` e `'` (aspas não fechadas)
+- `\` (escape)
+- `|`, `&`, `;` (operadores de pipeline/background/terminador)
+- `<`, `>`, `(`, `)`, `*`, `?`, `[`, `]` (redirecionamento/globbing)
+- `~` e `#` (expansões e comentários em alguns shells)
+- Quebras de linha e caracteres NUL
+
+Se o texto que será lido puder conter qualquer um desses, prefira uma das estratégias a seguir para evitar problemas:
+
+- Use aspas simples ao passar o argumento: `./scripts/say_fernanda.sh 'Texto com $ e ! sem expansão'`.
+- Escape apenas os caracteres problemáticos dentro de aspas duplas: `"` -> `\"`, `!` -> `\!`, etc.
+- Use um arquivo temporário e o `say -f <file>` (forma robusta):
+
+```bash
+printf '%s' "Texto com chars problemáticos: $ ` \ " ' | &" > /tmp/msg.txt
+say -v "Fernanda" -r 300 -f /tmp/msg.txt
+```
+
+Observação: `say` aceita a opção `-f <file>` que lê o texto do arquivo, evitando a maior parte das interpretações da linha de comando.
+
+- Outra opção é criar o arquivo temporário e chamar o wrapper lendo o conteúdo via `cat` para uma substituição segura no cliente, mas preferimos `say -f` quando possível.
+
+Escolha a estratégia que melhor se adapta ao seu fluxo: para strings curtas e controladas, aspas simples ou escape pontual bastam; para conteúdo livre do usuário (ou que contenha muitas marcas), use `-f` com um arquivo temporário.
+
 ### Parar a fala
 
 Se precisar interromper a fala em execução:

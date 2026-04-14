@@ -5,7 +5,7 @@ VOICE="Fernanda"
 RATE=300
 
 if [ "$#" -eq 0 ]; then
-  echo "Usage: $0 \"Texto que será lido\""
+  echo "Usage: $0 \"Texto que será lido\"" >&2
   exit 1
 fi
 
