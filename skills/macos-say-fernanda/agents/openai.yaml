@@ -1,0 +1,4 @@
+interface:
+  display_name: "macOS say — Fernanda"
+  short_description: "Leia texto em voz alta com a voz Fernanda usando o utilitário nativo `say`."
+  default_prompt: "Use $say-fernanda para falar o texto fornecido no macOS local usando a voz Fernanda."
