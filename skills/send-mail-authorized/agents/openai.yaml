@@ -1,0 +1,4 @@
+interface:
+  display_name: "Send Mail Authorized"
+  short_description: "Envia emails com o comando local `send-mail` para você mesmo ou destinatários explicitamente autorizados."
+  default_prompt: "Use $send-mail-authorized para redigir e enviar emails com o comando local send-mail, limitando envios ao próprio usuário ou a terceiros autorizados explicitamente."
