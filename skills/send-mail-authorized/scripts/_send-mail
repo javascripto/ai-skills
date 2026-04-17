@@ -1,0 +1,60 @@
+#compdef send-mail
+
+_send_mail_recipients() {
+  local -a recipient_list
+
+  if [[ -n ${EMAIL_ALLOWED_RECIPIENTS:-} ]]; then
+    recipient_list=(${(s/;/)EMAIL_ALLOWED_RECIPIENTS})
+  fi
+
+  if (( ${#recipient_list[@]} > 0 )); then
+    _describe -t recipients 'destinatário' recipient_list
+  else
+    _message 'email do destinatário'
+  fi
+}
+
+_send_mail() {
+  local -a ids_hist ids_trash
+  local cmd output
+
+  if (( $+commands[send-mail] )); then
+    cmd=send-mail
+  elif (( $+commands[send-email] )); then
+    cmd=send-email
+  else
+    cmd=
+  fi
+
+  if [[ -n $cmd ]]; then
+    if (( $+commands[jq] )); then
+      output="$($cmd --show-history --json 2>/dev/null)"
+      [[ -n $output ]] && ids_hist=(${(f)"$(jq -r '.[].id // empty' <<<"$output" 2>/dev/null)"})
+
+      output="$($cmd --show-trash --json 2>/dev/null)"
+      [[ -n $output ]] && ids_trash=(${(f)"$(jq -r '.[].id // empty' <<<"$output" 2>/dev/null)"})
+    else
+      ids_hist=(${(f)"$($cmd --show-history --json 2>/dev/null | tr -cd '0-9\n')"})
+      ids_trash=(${(f)"$($cmd --show-trash --json 2>/dev/null | tr -cd '0-9\n')"})
+    fi
+  fi
+
+  _arguments \
+    '-h[Mostrar ajuda]' \
+    '--help[Mostrar ajuda]' \
+    '--subject=[Assunto do email]:assunto:_message' \
+    '--message=[Mensagem do email (use - para stdin)]:mensagem:_message' \
+    '--to=[Destinatário]:email:_send_mail_recipients' \
+    '--auth[Gerar App Password]' \
+    '--silent[Não imprime saída]' \
+    '--json[Output em JSON]' \
+    '--show-history[Mostrar histórico]' \
+    "--show-message[Mostrar mensagem por ID]:ID:(${ids_hist})" \
+    '--clear-history[Mover histórico para lixeira]' \
+    "--delete-log-message[Mover log para lixeira]:ID:(${ids_hist})" \
+    '--show-trash[Mostrar lixeira]' \
+    "--restore-log[Restaurar log da lixeira]:ID:(${ids_trash})" \
+    '--reindex[Reindexar IDs]'
+}
+
+_send_mail "$@"
