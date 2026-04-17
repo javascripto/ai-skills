@@ -1,11 +1,11 @@
 ---
 name: send-mail-authorized
-description: Ensina agentes de IA a enviar emails para você mesmo ou para destinatários explicitamente autorizados usando o comando local `send-mail`. Use quando o usuário pedir para redigir, revisar ou enviar email com `scripts/send_mail.py`, inclusive com corpo via stdin, histórico e modos JSON/silent.
+description: Ensina agentes de IA a enviar emails para você mesmo ou para destinatários explicitamente autorizados usando o comando `send-mail` disponível no sistema. Use quando o usuário pedir para redigir, revisar ou enviar email com `send-mail`, inclusive com corpo via stdin, HTML, Markdown, histórico e modos JSON/silent.
 ---
 
 # Send Mail Authorized
 
-Use esta skill quando o usuário quiser que o agente envie um email com o comando local `send-mail`.
+Use esta skill quando o usuário quiser que o agente envie um email com o comando `send-mail`.
 
 Esta skill é restrita a dois casos:
 - envio para o próprio usuário
@@ -15,8 +15,15 @@ Se a autorização para terceiros não estiver clara, pare e peça confirmação
 
 ## Ferramenta
 
-- Comando principal: `send-mail`
-- Script fonte: `scripts/send_mail.py`
+- Preferência: use o comando `send-mail` já configurado no sistema.
+- Script de referência: `scripts/send_mail.py`
+- Completion de referência: `scripts/_send-mail`
+
+## Preferência de uso
+
+- Sempre prefira o `send-mail` disponível no terminal do sistema.
+- Use `scripts/send_mail.py` apenas como referência de implementação, fallback local ou para manutenção da skill.
+- Se houver diferença entre o script da skill e o comando instalado no sistema, siga o comportamento do comando do sistema para executar o envio.
 
 ## Fluxo recomendado
 
@@ -26,7 +33,8 @@ Se a autorização para terceiros não estiver clara, pare e peça confirmação
 4. Redija um assunto claro e uma mensagem objetiva.
 5. Use `send-mail --subject ... --message ...` para mensagens curtas.
 6. Use `--message -` com stdin quando o corpo for longo, multilinha ou tiver aspas que compliquem escaping.
-7. Depois do envio, relate de forma breve para quem foi enviado e qual foi o assunto.
+7. Use `--html` para HTML direto e `--markdown` quando quiser converter Markdown simples para HTML antes do envio.
+8. Depois do envio, relate de forma breve para quem foi enviado e qual foi o assunto.
 
 ## Comandos úteis
 
@@ -58,6 +66,18 @@ Saída estruturada:
 
 ```bash
 send-mail --to "person@example.com" --subject "Status" --message "Done." --json
+```
+
+HTML direto:
+
+```bash
+send-mail --subject "Styled update" --message "<strong>Hello</strong>" --html
+```
+
+Markdown convertido para HTML:
+
+```bash
+cat summary.md | send-mail --subject "Weekly summary" --message - --markdown
 ```
 
 Sem imprimir saída:

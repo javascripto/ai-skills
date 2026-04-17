@@ -44,6 +44,8 @@ _send_mail() {
     '--help[Mostrar ajuda]' \
     '--subject=[Assunto do email]:assunto:_message' \
     '--message=[Mensagem do email (use - para stdin)]:mensagem:_message' \
+    '(-markdown)--html[Enviar mensagem como HTML]' \
+    '(-html)--markdown[Converter Markdown simples para HTML e enviar]' \
     '--to=[Destinatário]:email:_send_mail_recipients' \
     '--auth[Gerar App Password]' \
     '--silent[Não imprime saída]' \
